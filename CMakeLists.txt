@@ -1,16 +1,9 @@
-cmake_minimum_required(VERSION 3.25) # Need 3.25+ for better C++20 modules support
+cmake_minimum_required(VERSION 3.22)
+#cmake_minimum_required(VERSION 3.25) # Need 3.25+ for better C++20 modules support
 project(Ticks VERSION 0.0.1 LANGUAGES CXX)
 
-# License information
-set(PROJECT_LICENSE "LGPL-3.0")
-set(PROJECT_LICENSE_URL "https://www.gnu.org/licenses/lgpl-3.0.en.html")
-
-# Install license files
-install(FILES 
-    "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
-    "${CMAKE_CURRENT_SOURCE_DIR}/COPYING"
-    DESTINATION "${CMAKE_INSTALL_DOCDIR}"
-)
+# Include GNUInstallDirs to define standard installation directories
+include(GNUInstallDirs)
 
 # Use C++20 standard with modules support
 set(CMAKE_CXX_STANDARD 20)
@@ -81,3 +74,14 @@ if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
+
+# License information
+set(PROJECT_LICENSE "LGPL-3.0")
+set(PROJECT_LICENSE_URL "https://www.gnu.org/licenses/lgpl-3.0.en.html")
+
+# Install license files
+install(FILES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
+    "${CMAKE_CURRENT_SOURCE_DIR}/COPYING"
+    DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+)

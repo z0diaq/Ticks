@@ -1,0 +1,32 @@
+# Default Configuration for DragDropTimer Application
+
+items:
+  # Example item 1
+  - name: "Build Project"
+    type: "Development"
+    action: "Run make && make install"
+    timeout: 300  # 5 minutes
+  
+  # Example item 2
+  - name: "Backup Database"
+    type: "Maintenance"
+    action: "pg_dump -U postgres -d mydb > backup.sql"
+    timeout: 600  # 10 minutes
+  
+  # Example item 3
+  - name: "Run Tests"
+    type: "Quality"
+    action: "pytest -xvs"
+    timeout: 120  # 2 minutes
+  
+  # Example item 4
+  - name: "Deploy to Staging"
+    type: "Operations"
+    action: "ansible-playbook deploy.yml -e env=staging"
+    timeout: 900  # 15 minutes
+  
+  # Example item 5
+  - name: "Coffee Break"
+    type: "Personal"
+    action: "Brew fresh coffee and relax"
+    timeout: 300  # 5 minutes
