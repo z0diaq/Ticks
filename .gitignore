@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # make sure secret dir stays secret
 secret/
+build/
