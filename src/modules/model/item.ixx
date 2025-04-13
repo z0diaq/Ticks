@@ -27,87 +27,100 @@ import <optional>;
  */
 export class Item {
 public:
-    // Constructor with default values
-    explicit Item(std::string name = "",
-                 std::string type = "",
-                 std::string action = "",
-                 int timeout = 0);
-    
-    // Pure functional setters that return new items
-    [[nodiscard]] Item withName(std::string newName) const;
-    [[nodiscard]] Item withType(std::string newType) const;
-    [[nodiscard]] Item withAction(std::string newAction) const;
-    [[nodiscard]] Item withTimeout(int newTimeout) const;
-    
-    // Getters
-    [[nodiscard]] const std::string& getName() const noexcept;
-    [[nodiscard]] const std::string& getType() const noexcept;
-    [[nodiscard]] const std::string& getAction() const noexcept;
-    [[nodiscard]] int getTimeout() const noexcept;
-    
-    // Equality operators
-    bool operator==(const Item& other) const;
-    bool operator!=(const Item& other) const;
-    
+	// Constructor with default values
+	explicit Item( std::string name = "",
+		std::string type = "",
+		std::string action = "",
+		int timeout = 0 );
+
+	// Pure functional setters that return new items
+	[[nodiscard]] Item withName( std::string newName ) const;
+	[[nodiscard]] Item withType( std::string newType ) const;
+	[[nodiscard]] Item withAction( std::string newAction ) const;
+	[[nodiscard]] Item withTimeout( int newTimeout ) const;
+
+	// Getters
+	[[nodiscard]] const std::string& getName( ) const noexcept;
+	[[nodiscard]] const std::string& getType( ) const noexcept;
+	[[nodiscard]] const std::string& getAction( ) const noexcept;
+	[[nodiscard]] int getTimeout( ) const noexcept;
+
+	// Equality operators
+	bool operator==( const Item& other ) const;
+	bool operator!=( const Item& other ) const;
+
 private:
-    std::string name_;
-    std::string type_;
-    std::string action_;
-    int timeout_;
+	std::string name_;
+	std::string type_;
+	std::string action_;
+	int timeout_;
 };
 
 // Factory function
 export template<typename... Args>
-[[nodiscard]] auto makeItem(Args&&... args) {
-    return Item(std::forward<Args>(args)...);
+[[nodiscard]] auto makeItem( Args&&... args )
+{
+	return Item( std::forward<Args>( args )... );
 }
 
 // Implementation
-Item::Item(std::string name, std::string type, std::string action, int timeout)
-    : name_(std::move(name)), 
-      type_(std::move(type)), 
-      action_(std::move(action)), 
-      timeout_(timeout) {}
-
-Item Item::withName(std::string newName) const {
-    return Item(std::move(newName), type_, action_, timeout_);
+Item::Item( std::string name, std::string type, std::string action, int timeout )
+	: name_( std::move( name ) ),
+	type_( std::move( type ) ),
+	action_( std::move( action ) ),
+	timeout_( timeout )
+{
 }
 
-Item Item::withType(std::string newType) const {
-    return Item(name_, std::move(newType), action_, timeout_);
+Item Item::withName( std::string newName ) const
+{
+	return Item( std::move( newName ), type_, action_, timeout_ );
 }
 
-Item Item::withAction(std::string newAction) const {
-    return Item(name_, type_, std::move(newAction), timeout_);
+Item Item::withType( std::string newType ) const
+{
+	return Item( name_, std::move( newType ), action_, timeout_ );
 }
 
-Item Item::withTimeout(int newTimeout) const {
-    return Item(name_, type_, action_, newTimeout);
+Item Item::withAction( std::string newAction ) const
+{
+	return Item( name_, type_, std::move( newAction ), timeout_ );
 }
 
-const std::string& Item::getName() const noexcept {
-    return name_;
+Item Item::withTimeout( int newTimeout ) const
+{
+	return Item( name_, type_, action_, newTimeout );
 }
 
-const std::string& Item::getType() const noexcept {
-    return type_;
+const std::string& Item::getName( ) const noexcept
+{
+	return name_;
 }
 
-const std::string& Item::getAction() const noexcept {
-    return action_;
+const std::string& Item::getType( ) const noexcept
+{
+	return type_;
 }
 
-int Item::getTimeout() const noexcept {
-    return timeout_;
+const std::string& Item::getAction( ) const noexcept
+{
+	return action_;
 }
 
-bool Item::operator==(const Item& other) const {
-    return name_ == other.name_ &&
-           type_ == other.type_ &&
-           action_ == other.action_ &&
-           timeout_ == other.timeout_;
+int Item::getTimeout( ) const noexcept
+{
+	return timeout_;
 }
 
-bool Item::operator!=(const Item& other) const {
-    return !(*this == other);
+bool Item::operator==( const Item& other ) const
+{
+	return name_ == other.name_ &&
+		type_ == other.type_ &&
+		action_ == other.action_ &&
+		timeout_ == other.timeout_;
+}
+
+bool Item::operator!=( const Item& other ) const
+{
+	return !( *this == other );
 }

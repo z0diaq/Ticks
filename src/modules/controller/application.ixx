@@ -20,6 +20,7 @@ export module controller.application;
 
 import view.main_frame;
 import model.config;
+
 import <memory>;
 import <optional>;
 import <filesystem>;
@@ -33,24 +34,24 @@ class wxString;
  */
 export class Application {
 public:
-    // Constructor
-    Application();
+	// Constructor
+	Application( );
 
-    // Initialize the application
-    bool initialize(int& argc, char** argv);
-    
-    // Run the application
-    int run();
-    
+	// Initialize the application
+	bool initialize( int& argc, char** argv );
+
+	// Run the application
+	int run( );
+
 private:
-    // Load configuration
-    std::optional<Config> loadConfiguration(const std::filesystem::path& path);
-    
-    // wxApp instance
-    wxApp* app_ = nullptr;
-    
-    // Main frame
-    std::unique_ptr<MainFrame> mainFrame_;
+	// Load configuration
+	std::optional<Config> loadConfiguration( const std::filesystem::path& path );
+
+	// wxApp instance
+	wxApp* app_ = nullptr;
+
+	// Main frame
+	std::unique_ptr<MainFrame> mainFrame_;
 };
 
 // Implementation will be in separate file due to wxWidgets dependencies

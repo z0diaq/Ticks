@@ -24,7 +24,7 @@ endif()
 
 # Find dependencies
 find_package(wxWidgets REQUIRED COMPONENTS core base)
-include(${wxWidgets_USE_FILE})
+include(${wxWidgets_USE_FILE}) # Convenience include file
 
 find_package(yaml-cpp REQUIRED)
 

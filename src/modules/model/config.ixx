@@ -28,37 +28,39 @@ import <algorithm>;
 import <fstream>;
 
 // Forward declare YAML::Node for use with header-only yaml-cpp library
-namespace YAML {
-    class Node;
+namespace YAML
+{
+	class Node;
 }
 
 /**
  * @brief Configuration manager that handles loading and saving YAML configuration
  */
-export class Config {
+export class Config
+{
 public:
-    // Default constructor
-    Config() = default;
-    
-    // Constructor with items
-    explicit Config(std::vector<Item> items);
-    
-    // Load from YAML file
-    [[nodiscard]] static std::optional<Config> loadFromYaml(const std::filesystem::path& filePath);
-    
-    // Save to YAML file
-    bool saveToYaml(const std::filesystem::path& filePath) const;
-    
-    // Get all items
-    [[nodiscard]] const std::vector<Item>& getItems() const noexcept;
-    
-    // Functional add, remove, update operations (immutable)
-    [[nodiscard]] Config withAddedItem(Item item) const;
-    [[nodiscard]] Config withRemovedItem(const Item& item) const;
-    [[nodiscard]] Config withUpdatedItem(const Item& oldItem, Item newItem) const;
-    
+	// Default constructor
+	Config( ) = default;
+
+	// Constructor with items
+	explicit Config( std::vector<Item> items );
+
+	// Load from YAML file
+	[[nodiscard]] static std::optional<Config> loadFromYaml( const std::filesystem::path& filePath );
+
+	// Save to YAML file
+	bool saveToYaml( const std::filesystem::path& filePath ) const;
+
+	// Get all items
+	[[nodiscard]] const std::vector<Item>& getItems( ) const noexcept;
+
+	// Functional add, remove, update operations (immutable)
+	[[nodiscard]] Config withAddedItem( Item item ) const;
+	[[nodiscard]] Config withRemovedItem( const Item& item ) const;
+	[[nodiscard]] Config withUpdatedItem( const Item& oldItem, Item newItem ) const;
+
 private:
-    std::vector<Item> items_;
+	std::vector<Item> items_;
 };
 
 // Implementation will be added separately since it depends on yaml-cpp

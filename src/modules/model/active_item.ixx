@@ -27,89 +27,102 @@ import <functional>;
 /**
  * @brief A class representing an active item with timer functionality
  */
-export class ActiveItem {
+export class ActiveItem
+{
 public:
-    using Callback = std::function<void()>;
-    
-    // Constructor
-    explicit ActiveItem(Item item, std::optional<Callback> onCompleteCallback = std::nullopt);
-    
-    // Start the timer
-    void start();
-    
-    // Stop the timer
-    void stop();
-    
-    // Reset the timer
-    void reset();
-    
-    // Update the timer - to be called periodically
-    void update();
-    
-    // Get the original item
-    [[nodiscard]] const Item& getItem() const noexcept;
-    
-    // Get remaining time as string
-    [[nodiscard]] std::string getRemainingTimeString() const;
-    
-    // Get ETA as time_point
-    [[nodiscard]] Timer::TimePoint getETA() const;
-    
-    // Check if timer is running
-    [[nodiscard]] bool isRunning() const;
-    
-    // Check if timer is completed
-    [[nodiscard]] bool isCompleted() const;
-    
-    // Functional setter for item
-    [[nodiscard]] ActiveItem withItem(Item newItem) const;
-    
+	using Callback = std::function<void( )>;
+
+	// Constructor
+	explicit ActiveItem( Item item, std::optional<Callback> onCompleteCallback = std::nullopt );
+
+	// Start the timer
+	void start( );
+
+	// Stop the timer
+	void stop( );
+
+	// Reset the timer
+	void reset( );
+
+	// Update the timer - to be called periodically
+	void update( );
+
+	// Get the original item
+	[[nodiscard]] const Item& getItem( ) const noexcept;
+
+	// Get remaining time as string
+	[[nodiscard]] std::string getRemainingTimeString( ) const;
+
+	// Get ETA as time_point
+	[[nodiscard]] Timer::TimePoint getETA( ) const;
+
+	// Check if timer is running
+	[[nodiscard]] bool isRunning( ) const;
+
+	// Check if timer is completed
+	[[nodiscard]] bool isCompleted( ) const;
+
+	// Functional setter for item
+	[[nodiscard]] ActiveItem withItem( Item newItem ) const;
+
 private:
-    Item item_;
-    Timer timer_;
+	Item item_;
+	Timer timer_;
 };
 
 // Implementation
-ActiveItem::ActiveItem(Item item, std::optional<Callback> onCompleteCallback)
-    : item_(std::move(item)), 
-      timer_(item_.getTimeout(), std::move(onCompleteCallback)) {}
-
-void ActiveItem::start() {
-    timer_.start();
+ActiveItem::ActiveItem( Item item, std::optional<Callback> onCompleteCallback )
+	: item_( std::move( item ) ),
+	timer_( item_.getTimeout( ), std::move( onCompleteCallback ) )
+{
 }
 
-void ActiveItem::stop() {
-    timer_.stop();
+void ActiveItem::start( )
+{
+	timer_.start( );
 }
 
-void ActiveItem::reset() {
-    timer_.reset();
+void ActiveItem::stop( )
+{
+	timer_.stop( );
 }
 
-void ActiveItem::update() {
-    timer_.update();
+void ActiveItem::reset( )
+{
+	timer_.reset( );
 }
 
-const Item& ActiveItem::getItem() const noexcept {
-    return item_;
+void ActiveItem::update( )
+{
+	timer_.update( );
 }
 
-std::string ActiveItem::getRemainingTimeString() const {
-    return timer_.getRemainingTimeString();
+const Item& ActiveItem::getItem( ) const noexcept
+{
+	return item_;
 }
 
-Timer::TimePoint ActiveItem::getETA() const {
-    return timer_.getETA();
+std::string ActiveItem::getRemainingTimeString( ) const
+{
+	return timer_.getRemainingTimeString( );
 }
 
-bool ActiveItem::isRunning() const {
-    return timer_.isRunning();
+Timer::TimePoint ActiveItem::getETA( ) const
+{
+	return timer_.getETA( );
 }
 
-bool ActiveItem::isCompleted() const {
-    return timer_.isCompleted();
+bool ActiveItem::isRunning( ) const
+{
+	return timer_.isRunning( );
 }
 
-ActiveItem ActiveItem::withItem(Item newItem) const {
-    return ActiveItem(std::move(newItem));
+bool ActiveItem::isCompleted( ) const
+{
+	return timer_.isCompleted( );
+}
+
+ActiveItem ActiveItem::withItem( Item newItem ) const
+{
+	return ActiveItem( std::move( newItem ) );
 }
