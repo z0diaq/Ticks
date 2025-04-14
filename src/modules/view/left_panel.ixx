@@ -31,40 +31,42 @@ class wxListEvent;
 class wxCommandEvent;
 
 // Custom event for drag start
-export wxDECLARE_EVENT(EVT_ITEM_DRAG_BEGIN, wxCommandEvent);
+// TODO: fixme
+//export wxDECLARE_EVENT( EVT_ITEM_DRAG_BEGIN, wxCommandEvent );
 
 /**
  * @brief Left panel containing draggable items from configuration
  */
-export class LeftPanel {
+export class LeftPanel
+{
 public:
-    // Constructor
-    explicit LeftPanel(wxWindow* parent);
-    
-    // Get the wxPanel
-    wxPanel* getPanel() const;
-    
-    // Load items from configuration
-    void loadItems(const Config& config);
-    
-    // Get items
-    [[nodiscard]] const std::vector<Item>& getItems() const;
-    
+	// Constructor
+	explicit LeftPanel( wxWindow* parent );
+
+	// Get the wxPanel
+	wxPanel* getPanel( ) const;
+
+	// Load items from configuration
+	void loadItems( const Config& config );
+
+	// Get items
+	[[nodiscard]] const std::vector<Item>& getItems( ) const;
+
 private:
-    void createControls();
-    void bindEvents();
-    void updateList();
-    
-    // Custom event handlers
-    void onListItemBeginDrag(wxListEvent& event);
-    void onListItemSelected(wxListEvent& event);
-    
-    // UI controls
-    wxPanel* panel_ = nullptr;
-    wxListCtrl* listCtrl_ = nullptr;
-    
-    // Items
-    std::vector<Item> items_;
+	void createControls( );
+	void bindEvents( );
+	void updateList( );
+
+	// Custom event handlers
+	void onListItemBeginDrag( wxListEvent& event );
+	void onListItemSelected( wxListEvent& event );
+
+	// UI controls
+	wxPanel* panel_ = nullptr;
+	wxListCtrl* listCtrl_ = nullptr;
+
+	// Items
+	std::vector<Item> items_;
 };
 
 // Implementation will be in separate file due to wxWidgets dependencies

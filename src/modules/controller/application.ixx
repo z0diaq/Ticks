@@ -25,14 +25,17 @@ import <memory>;
 import <optional>;
 import <filesystem>;
 
+import <wx/app.h>;
+
 // Forward declaration for wxWidgets classes
-class wxApp;
+//class wxApp;
 class wxString;
 
 /**
  * @brief Main wxWidgets application class
  */
-export class Application {
+export class Application
+{
 public:
 	// Constructor
 	Application( );

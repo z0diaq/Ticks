@@ -24,18 +24,23 @@ import view.right_panel;
 import <memory>;
 import <filesystem>;
 
+import <wx/frame.h>;
+import <wx/string.h>;
+import <wx/gdicmn.h>; //wxSize, wxPoint
+
 // Forward declarations for wxWidgets classes
-class wxFrame;
-class wxString;
-class wxPoint;
-class wxSize;
+//class wxFrame;
+//class wxString;
+//class wxPoint;
+//class wxSize;
 class wxSplitterWindow;
 class wxCommandEvent;
 
 /**
  * @brief Main application frame containing split panels
  */
-export class MainFrame {
+export class MainFrame
+{
 public:
 	// Constructor
 	MainFrame( const wxString& title, const wxPoint& pos, const wxSize& size );

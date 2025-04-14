@@ -31,31 +31,32 @@ class wxCommandEvent;
 /**
  * @brief Dialog for configuring an item
  */
-export class ConfigDialog {
+export class ConfigDialog
+{
 public:
-    // Constructor
-    ConfigDialog(wxWindow* parent, const Item& item);
-    
-    // Show the dialog and get result
-    bool showDialog();
-    
-    // Get the modified item
-    [[nodiscard]] Item getModifiedItem() const;
-    
+	// Constructor
+	ConfigDialog( wxWindow* parent, const Item& item );
+
+	// Show the dialog and get result
+	bool showDialog( );
+
+	// Get the modified item
+	[[nodiscard]] Item getModifiedItem( ) const;
+
 private:
-    void createControls();
-    void bindEvents();
-    
-    // UI Controls
-    wxDialog* dialog_ = nullptr;
-    wxTextCtrl* nameCtrl_ = nullptr;
-    wxTextCtrl* typeCtrl_ = nullptr;
-    wxTextCtrl* actionCtrl_ = nullptr;
-    wxSpinCtrl* timeoutCtrl_ = nullptr;
-    
-    // Original and modified item
-    Item originalItem_;
-    bool dialogResult_ = false;
+	void createControls( );
+	void bindEvents( );
+
+	// UI Controls
+	wxDialog* dialog_ = nullptr;
+	wxTextCtrl* nameCtrl_ = nullptr;
+	wxTextCtrl* typeCtrl_ = nullptr;
+	wxTextCtrl* actionCtrl_ = nullptr;
+	wxSpinCtrl* timeoutCtrl_ = nullptr;
+
+	// Original and modified item
+	Item originalItem_;
+	bool dialogResult_ = false;
 };
 
 // Implementation will be in separate file due to wxWidgets dependencies

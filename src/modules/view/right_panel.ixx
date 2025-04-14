@@ -25,6 +25,8 @@ import <vector>;
 import <memory>;
 import <chrono>;
 
+import <wx/defs.h>;
+
 // Forward declarations for wxWidgets classes
 class wxWindow;
 class wxPanel;
@@ -32,49 +34,51 @@ class wxListCtrl;
 class wxTimer;
 class wxTimerEvent;
 class wxListEvent;
+enum wxDragResult;
 
 /**
  * @brief Right panel containing active items with timers
  */
-export class RightPanel {
+export class RightPanel
+{
 public:
-    // Constructor
-    explicit RightPanel(wxWindow* parent);
-    
-    // Get the wxPanel
-    wxPanel* getPanel() const;
-    
-    // Add an active item
-    bool addItem(const Item& item);
-    
-    // Update all timers
-    void updateTimers();
-    
+	// Constructor
+	explicit RightPanel( wxWindow* parent );
+
+	// Get the wxPanel
+	wxPanel* getPanel( ) const;
+
+	// Add an active item
+	bool addItem( const Item& item );
+
+	// Update all timers
+	void updateTimers( );
+
 private:
-    // Timer ID for updating active items
-    static constexpr int TIMER_ID = 1001;
-    
-    void createControls();
-    void bindEvents();
-    void updateList();
-    
-    // Event handlers
-    void onDragEnter(wxDragResult& result);
-    void onDragOver(wxCoord x, wxCoord y, wxDragResult& result);
-    void onDrop(wxCoord x, wxCoord y, const Item& item);
-    void onTimer(wxTimerEvent& event);
-    void onItemActivated(wxListEvent& event);
-    
-    // Format time point to string
-    static wxString formatTimePoint(const std::chrono::system_clock::time_point& timePoint);
-    
-    // UI controls
-    wxPanel* panel_ = nullptr;
-    wxListCtrl* listCtrl_ = nullptr;
-    wxTimer* timer_ = nullptr;
-    
-    // Data
-    std::vector<ActiveItem> activeItems_;
+	// Timer ID for updating active items
+	static constexpr int TIMER_ID = 1001;
+
+	void createControls( );
+	void bindEvents( );
+	void updateList( );
+
+	// Event handlers
+	void onDragEnter( wxDragResult& result );
+	void onDragOver( wxCoord x, wxCoord y, wxDragResult& result );
+	void onDrop( wxCoord x, wxCoord y, const Item& item );
+	void onTimer( wxTimerEvent& event );
+	void onItemActivated( wxListEvent& event );
+
+	// Format time point to string
+	static wxString formatTimePoint( const std::chrono::system_clock::time_point& timePoint );
+
+	// UI controls
+	wxPanel* panel_ = nullptr;
+	wxListCtrl* listCtrl_ = nullptr;
+	wxTimer* timer_ = nullptr;
+
+	// Data
+	std::vector<ActiveItem> activeItems_;
 };
 
 // Implementation will be in separate file due to wxWidgets dependencies

@@ -23,6 +23,7 @@ import model.timer;
 import <memory>;
 import <string>;
 import <functional>;
+import <optional>;
 
 /**
  * @brief A class representing an active item with timer functionality

@@ -32,6 +32,7 @@ find_package(yaml-cpp REQUIRED)
 file(GLOB_RECURSE MODULE_FILES 
     "${CMAKE_CURRENT_SOURCE_DIR}/src/modules/*.ixx"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/modules/*.cppm"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/modules/*.cpp"
 )
 
 # Implementation files

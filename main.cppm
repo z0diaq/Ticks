@@ -24,22 +24,29 @@ export module main;
 
 import controller.application;
 
-int main(int argc, char* argv[]) {
-    try {
-        // Create and initialize the application
-        Application app;
-        if (!app.initialize(argc, argv)) {
-            std::cerr << "Failed to initialize application" << std::endl;
-            return 1;
-        }
-        
-        // Run the application
-        return app.run();
-    } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-        return 1;
-    } catch (...) {
-        std::cerr << "Unknown exception" << std::endl;
-        return 1;
-    }
+int main( int argc, char* argv[ ] )
+{
+	try
+	{
+		// Create and initialize the application
+		Application app;
+		if( !app.initialize( argc, argv ) )
+		{
+			std::cerr << "Failed to initialize application" << std::endl;
+			return 1;
+		}
+
+		// Run the application
+		return app.run( );
+	}
+	catch( const std::exception& e )
+	{
+		std::cerr << "Exception: " << e.what( ) << std::endl;
+		return 1;
+	}
+	catch( ... )
+	{
+		std::cerr << "Unknown exception" << std::endl;
+		return 1;
+	}
 }
