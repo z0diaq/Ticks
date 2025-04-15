@@ -34,7 +34,7 @@ endif()
 target_include_directories(${PROJECT_NAME}_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_link_libraries(${PROJECT_NAME}_test PRIVATE 
     ${wxWidgets_LIBRARIES}
-    yaml-cpp
+    yaml-cpp::yaml-cpp
     GTest::GTest
     GTest::Main
 )
