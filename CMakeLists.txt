@@ -59,7 +59,7 @@ if(MSVC)
   )
 endif()
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src ${wxWidgets_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${wxWidgets_LIBRARIES} yaml-cpp::yaml-cpp)
 
 # Copy configuration
