@@ -21,12 +21,9 @@ export module view.config_dialog;
 import model.item;
 import <memory>;
 
-// Forward declarations for wxWidgets classes
-class wxWindow;
-class wxDialog;
-class wxTextCtrl;
-class wxSpinCtrl;
-class wxCommandEvent;
+import <wx/wx.h>;
+import <wx/dialog.h>;
+import <wx/spinctrl.h>;
 
 /**
  * @brief Dialog for configuring an item

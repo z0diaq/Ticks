@@ -16,7 +16,8 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-module view.left_panel;
+import view.left_panel;
+import model.item;
 
 #include <wx/wx.h>
 #include <wx/listctrl.h>
@@ -66,6 +67,17 @@ public:
 			return false;
 		item_ = **static_cast< Item* const* >( buf );
 		return true;
+	}
+
+	//todo: dummy methods
+	size_t GetFormatCount( Direction dir = Get ) const
+	{
+		return 0;
+	}
+
+	void GetAllFormats( wxDataFormat* formats,
+		Direction dir = Get ) const
+	{
 	}
 
 private:
@@ -182,7 +194,8 @@ void LeftPanel::onListItemBeginDrag( wxListEvent& event )
 		// Notify parent about drag start
 		wxCommandEvent dragEvent( EVT_ITEM_DRAG_BEGIN );
 		dragEvent.SetClientData( new Item( item ) ); // Set client data to a copy of the item
-		panel_->ProcessEvent( dragEvent );
+		//panel_->ProcessEvent( dragEvent );
+		panel_->GetEventHandler( )->ProcessEvent( dragEvent );
 	}
 }
 

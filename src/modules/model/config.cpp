@@ -16,9 +16,14 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-module model.config;
+
+//#include <yaml-cpp/yaml.h>
+
+import model.config;
+import model.item;
 
 #include <yaml-cpp/yaml.h>
+//import <yaml-cpp/yaml.h>;
 
 // Custom namespace for YAML conversion
 namespace YAML

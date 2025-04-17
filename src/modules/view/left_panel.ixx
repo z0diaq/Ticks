@@ -20,15 +20,13 @@ export module view.left_panel;
 
 import model.item;
 import model.config;
+
 import <vector>;
 import <memory>;
 
-// Forward declarations for wxWidgets classes
-class wxWindow;
-class wxPanel;
-class wxListCtrl;
-class wxListEvent;
-class wxCommandEvent;
+import <wx/wx.h>;
+import <wx/panel.h>;
+import <wx/listctrl.h>;
 
 // Custom event for drag start
 // TODO: fixme

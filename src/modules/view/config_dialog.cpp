@@ -16,7 +16,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-module view.config_dialog;
+import view.config_dialog;
 
 #include <wx/wx.h>
 #include <wx/spinctrl.h>

@@ -21,20 +21,22 @@ export module view.main_frame;
 import model.config;
 import view.left_panel;
 import view.right_panel;
+
 import <memory>;
 import <filesystem>;
 
 import <wx/frame.h>;
 import <wx/string.h>;
 import <wx/gdicmn.h>; //wxSize, wxPoint
+import <wx/splitter.h>;
 
 // Forward declarations for wxWidgets classes
 //class wxFrame;
 //class wxString;
 //class wxPoint;
 //class wxSize;
-class wxSplitterWindow;
-class wxCommandEvent;
+//class wxSplitterWindow;
+//class wxCommandEvent;
 
 /**
  * @brief Main application frame containing split panels
