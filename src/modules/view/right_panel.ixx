@@ -18,9 +18,9 @@
  */
 export module view.right_panel;
 
-import model.item;
+export import model.item;
 import model.active_item;
-import view.config_dialog;
+export import view.config_dialog;
 import <vector>;
 import <memory>;
 import <chrono>;
@@ -28,13 +28,13 @@ import <chrono>;
 import <wx/defs.h>;
 
 // Forward declarations for wxWidgets classes
-class wxWindow;
-class wxPanel;
-class wxListCtrl;
-class wxTimer;
-class wxTimerEvent;
-class wxListEvent;
-enum wxDragResult;
+import <wx/wx.h>;
+import <wx/panel.h>;
+import <wx/listctrl.h>;
+import <wx/timer.h>;
+
+//enum wxDragResult;
+import <wx/dnd.h>;
 
 /**
  * @brief Right panel containing active items with timers

@@ -16,7 +16,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-module view.right_panel;
+import view.right_panel;
 
 #include <wx/wx.h>
 #include <wx/listctrl.h>
@@ -25,6 +25,7 @@ module view.right_panel;
 #include <iomanip>
 #include <sstream>
 
+#if 0
 // Custom drop target for receiving items
 class ItemDropTarget : public wxDropTarget
 {
@@ -97,6 +98,8 @@ private:
 	// This is a hack for simplicity - normally you'd use the data object
 	static inline std::unique_ptr<Item> lastDraggedItem_;
 };
+#endif
+
 
 RightPanel::RightPanel( wxWindow* parent ) {
 	panel_ = new wxPanel( parent, wxID_ANY );
@@ -146,8 +149,8 @@ void RightPanel::createControls( )
 		this->onDragOver( x, y, result );
 	};
 
-	auto* dropTarget = new ItemDropTarget( onDrop, onDragEnter, onDragOver );
-	listCtrl_->SetDropTarget( dropTarget );
+	//auto* dropTarget = new ItemDropTarget( onDrop, onDragEnter, onDragOver );
+	//listCtrl_->SetDropTarget( dropTarget );
 
 	// Add the list to the sizer
 	sizer->Add( listCtrl_, 1, wxEXPAND | wxALL, 5 );
