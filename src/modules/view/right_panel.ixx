@@ -27,7 +27,6 @@ import <chrono>;
 
 import <wx/defs.h>;
 
-// Forward declarations for wxWidgets classes
 import <wx/wx.h>;
 import <wx/panel.h>;
 import <wx/listctrl.h>;

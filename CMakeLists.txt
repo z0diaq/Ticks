@@ -5,6 +5,8 @@ project(Ticks VERSION 0.0.1 LANGUAGES CXX)
 # Include GNUInstallDirs to define standard installation directories
 include(GNUInstallDirs)
 
+include(FetchContent)
+
 # Use C++20 standard with modules support
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,7 +28,12 @@ endif()
 find_package(wxWidgets REQUIRED COMPONENTS core base)
 include(${wxWidgets_USE_FILE}) # Convenience include file
 
-find_package(yaml-cpp REQUIRED)
+FetchContent_Declare(
+  yaml-cpp
+  GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+  GIT_TAG master # Can be a tag (yaml-cpp-x.x.x), a commit hash, or a branch name (master)
+)
+FetchContent_MakeAvailable(yaml-cpp)
 
 # Module files
 file(GLOB_RECURSE MODULE_FILES 

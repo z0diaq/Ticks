@@ -29,8 +29,7 @@ import <wx/panel.h>;
 import <wx/listctrl.h>;
 
 // Custom event for drag start
-// TODO: fixme
-//export wxDECLARE_EVENT( EVT_ITEM_DRAG_BEGIN, wxCommandEvent );
+export wxDECLARE_EVENT( EVT_ITEM_DRAG_BEGIN, wxCommandEvent );
 
 /**
  * @brief Left panel containing draggable items from configuration

@@ -25,30 +25,33 @@ import view.right_panel;
 #include <iomanip>
 #include <sstream>
 
-#if 0
+class SimpleTimerDataObject : public wxDataObjectSimple
+{
+};
+
 // Custom drop target for receiving items
 class ItemDropTarget : public wxDropTarget
 {
 public:
 	using OnDropCallback = std::function<void( wxCoord, wxCoord, const Item& )>;
-	using OnDragEnterCallback = std::function<void( wxDragResult& )>;
+	//using OnDragEnterCallback = std::function<void( wxDragResult& )>;
 	using OnDragOverCallback = std::function<void( wxCoord, wxCoord, wxDragResult& )>;
 
 	ItemDropTarget( OnDropCallback onDrop,
-		OnDragEnterCallback onDragEnter = nullptr,
+		//OnDragEnterCallback onDragEnter = nullptr
 		OnDragOverCallback onDragOver = nullptr )
 		: wxDropTarget( ),
 		onDrop_( std::move( onDrop ) ),
-		onDragEnter_( std::move( onDragEnter ) ),
+		//onDragEnter_( std::move( onDragEnter ) )//,
 		onDragOver_( std::move( onDragOver ) )
 	{
 
 		// Create and set data object
-		auto* dataObject = new wxDataObject( );
+		auto* dataObject = new SimpleTimerDataObject( );
 		SetDataObject( dataObject );
 	}
 
-	wxDragResult OnDragEnter( wxCoord x, wxCoord y, wxDragResult defResult ) override
+	/*wxDragResult OnDragEnter( wxCoord x, wxCoord y, wxDragResult defResult ) override
 	{
 		if( onDragEnter_ )
 		{
@@ -57,7 +60,7 @@ public:
 			return result;
 		}
 		return defResult;
-	}
+	}*/
 
 	wxDragResult OnDragOver( wxCoord x, wxCoord y, wxDragResult defResult ) override
 	{
@@ -92,13 +95,12 @@ public:
 
 private:
 	OnDropCallback onDrop_;
-	OnDragEnterCallback onDragEnter_;
+	//OnDragEnterCallback onDragEnter_;
 	OnDragOverCallback onDragOver_;
 
 	// This is a hack for simplicity - normally you'd use the data object
 	static inline std::unique_ptr<Item> lastDraggedItem_;
 };
-#endif
 
 
 RightPanel::RightPanel( wxWindow* parent ) {
@@ -149,8 +151,8 @@ void RightPanel::createControls( )
 		this->onDragOver( x, y, result );
 	};
 
-	//auto* dropTarget = new ItemDropTarget( onDrop, onDragEnter, onDragOver );
-	//listCtrl_->SetDropTarget( dropTarget );
+	auto* dropTarget = new ItemDropTarget( onDrop, /*onDragEnter,*/ onDragOver );
+	listCtrl_->SetDropTarget( dropTarget );
 
 	// Add the list to the sizer
 	sizer->Add( listCtrl_, 1, wxEXPAND | wxALL, 5 );

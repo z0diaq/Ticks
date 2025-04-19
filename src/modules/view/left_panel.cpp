@@ -68,7 +68,7 @@ public:
 		item_ = **static_cast< Item* const* >( buf );
 		return true;
 	}
-
+#if 0
 	//todo: dummy methods
 	size_t GetFormatCount( Direction dir = Get ) const
 	{
@@ -79,6 +79,7 @@ public:
 		Direction dir = Get ) const
 	{
 	}
+#endif
 
 private:
 	Item item_;
@@ -187,15 +188,18 @@ void LeftPanel::onListItemBeginDrag( wxListEvent& event )
 
 		// Create a drop source
 		ItemDropSource dropSource( panel_, item );
-
+		dropSource.SetData( itemData );
 		// Do drag and drop
-		wxDragResult result = dropSource.DoDragDrop( wxDrag_DefaultMove );
+		//wxDragResult result = dropSource.DoDragDrop( wxDrag_DefaultMove );
+		wxDragResult result = dropSource.DoDragDrop( );
 
 		// Notify parent about drag start
+	#if 1
 		wxCommandEvent dragEvent( EVT_ITEM_DRAG_BEGIN );
 		dragEvent.SetClientData( new Item( item ) ); // Set client data to a copy of the item
 		//panel_->ProcessEvent( dragEvent );
 		panel_->GetEventHandler( )->ProcessEvent( dragEvent );
+	#endif
 	}
 }
 

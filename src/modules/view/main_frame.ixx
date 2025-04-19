@@ -30,14 +30,6 @@ import <wx/string.h>;
 import <wx/gdicmn.h>; //wxSize, wxPoint
 import <wx/splitter.h>;
 
-// Forward declarations for wxWidgets classes
-//class wxFrame;
-//class wxString;
-//class wxPoint;
-//class wxSize;
-//class wxSplitterWindow;
-//class wxCommandEvent;
-
 /**
  * @brief Main application frame containing split panels
  */
